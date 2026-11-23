@@ -3,14 +3,15 @@
 
 The word is HEYSIRI: the way a grandma types "Hey Siri" run together as one
 word, in all caps — the wake phrase she calls her grandchild's robot by.
-Deterministic, no network, no input. Writes exactly one word to
-/output/entry.txt and nothing else.
+Deterministic, no network, no input. Writes exactly one word (no trailing
+newline) to entry.txt in the output directory and nothing else.
 """
 
 import os
 import shutil
 
-OUTPUT_DIR = "/output"
+# The grader mounts /output; OUTPUT_DIR lets the same program be tested locally.
+OUTPUT_DIR = os.environ.get("OUTPUT_DIR", "/output")
 OUTPUT_FILE = os.path.join(OUTPUT_DIR, "entry.txt")
 WORD = "HEYSIRI"
 
